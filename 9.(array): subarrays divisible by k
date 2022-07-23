@@ -1,0 +1,33 @@
+// algorithm
+//first if sum is negative then add k to it.
+// find remainder of every sum and store it in the unordered map with its frequency starting from 1
+// if same remainder occurs another time then we found 1 subarray
+    
+    
+    
+    
+    
+    
+    int subarraysDivByK(vector<int>& nums, int k) {
+            
+        unordered_map<int, int> remainders_freq;
+        int n = nums.size();
+        int sum = 0;
+        remainders_freq[0] = 1;
+        int ans=0;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            int rem=sum%k;
+            if(rem<0){
+                rem+=k;
+            }
+            if(remainders_freq.find(rem)!=remainders_freq.end()){
+                remainders_freq[rem]++;
+                ans+=(remainders_freq[rem]-1);
+            }else{
+                remainders_freq[rem]=1;
+            }
+            
+        }
+        return ans;
+    }
