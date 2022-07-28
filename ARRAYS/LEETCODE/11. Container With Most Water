@@ -1,0 +1,51 @@
+//using brute force
+
+            int maxArea(vector<int>& height) {
+                int n=height.size();
+                int i,j,area=0,t;
+
+
+                for(i=0;i<n-1;i++){
+                   for(j=i+1;j<n;j++){
+                       if(height[i]>height[j]){
+                           t=height[j]*abs(j-i);
+                       }else t=height[i]*abs(j-i);
+
+                       if(t>area){
+                           area=t;
+                       }
+
+                   }
+                }
+
+
+             return area;   
+            }
+
+
+
+
+// using two pointers
+          int maxArea(vector<int>& height) {
+              int n=height.size();
+               int first=0;
+              int last=n-1;
+              int max_area=0;
+              int t;
+              while(last>first){
+
+                  if(height[last]>height[first]){
+                      t=height[first]*(last-first);
+                      if(max_area<t)
+                          max_area=t;
+                      first++;
+                  }else{
+                      t=height[last]*(last-first);
+                      last--;
+                      if(max_area<t)
+                          max_area=t;
+
+                  }
+              }    
+           return max_area;   
+          }
