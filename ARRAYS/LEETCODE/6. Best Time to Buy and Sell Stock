@@ -1,0 +1,14 @@
+   // linear time here we are figuring out the first min and then comparing the difference of min and prices to the untill we fnd new min and checking it untill new difference is greater 
+    
+    int maxProfit(vector<int>& prices) {
+        int max=0;
+        int min=INT_MAX;     // we can also use maximum value in int
+        for(int i=0;i<prices.size();i++){
+            if(prices[i]<min){
+                min=prices[i];
+            }else if(prices[i]-min>max){
+                max=prices[i]-min;
+            }
+        }
+        return max;
+    }
