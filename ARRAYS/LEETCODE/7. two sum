@@ -1,0 +1,40 @@
+   // brute force
+   
+   vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> vec;
+        for(int i=0;i<nums.size()-1;i++){
+            for(int j=i+1;j<nums.size();j++){
+                if(nums[i]+nums[j]==target){
+                    vec.push_back(i);
+                    vec.push_back(j);
+                }
+            }
+        }
+        return vec;
+    }
+    
+    //  using ordered map
+    
+    // put the 1st value in then use the loop to find the complementary number if exists then push it int the vector;
+    
+       vector<int> twoSum(vector<int>& nums, int target) {
+       map<int,int> result;
+       vector<int> vec;
+        int complementary;
+        result[0]=nums[0];
+        for(int i=1;i<nums.size();i++){
+        
+          complementary=target-nums[i];
+          if(result.find(complementary)!=result.end()){
+              vec.push_back(nums[i]);
+              vec.push_back(complemetary);
+               }
+          result[i]=nums[i];
+        }
+
+
+}
+
+        return vec;
+    }
+    
