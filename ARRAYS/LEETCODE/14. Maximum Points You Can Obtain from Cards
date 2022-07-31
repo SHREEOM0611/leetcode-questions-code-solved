@@ -1,0 +1,55 @@
+  // it may give tle
+  // finding the subarray with min sum and delete it wiht total sum
+  
+  int maxScore(vector<int>& cardPoints, int k) {
+        int n=cardPoints.size();
+        int sum=0,min=INT_MAX,  tsum=0;
+        k=n-k;
+        
+        for(int i=0;i<n-k+1;i++){
+            sum=0;
+            
+            for(int j=i;j<i+k;j++){
+                sum+=cardPoints[j];
+            }
+            
+            if(min>sum){
+                min=sum;
+            }
+        }
+  
+            
+        tsum=accumulate(cardPoints.begin(),cardPoints.end(),0);
+        
+        
+        return tsum-min;
+    }
+    
+    
+    
+    
+    // choosing last n elements as max sum and then move rightward and check;
+    int n=cardPoints.size(),max_s=0,last=0,first=0;
+        
+        for(int i=n-k;i<n;i++){
+            last+=cardPoints[i];
+        }
+        
+        max_s=last;
+        
+        for(int i=0;i<k;i++){
+            
+           first+=cardPoints[i];
+            last-=cardPoints[n-k+i];
+            
+            
+            max_s=max(max_s,first+last);
+        }
+        return max_s;
+        
+    }
+    
+    
+    // chhosing first k elements and moving leftward to check new sum with previous one
+    
+    
