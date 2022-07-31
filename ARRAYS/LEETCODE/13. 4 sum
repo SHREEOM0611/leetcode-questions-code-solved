@@ -1,3 +1,10 @@
+// use same approach as 3 sum question.
+// sort
+// fix two points i=0 to i<n-3 & from i+1 to n-2
+// intialise next the two pointer from next & last.
+//use conditions for sum of four element =0,>0,<0.
+ 
+ 
  vector<vector<int>> fourSum(vector<int>& nums, int target) {
       vector<vector<int>> result;
         int n=nums.size();
