@@ -1,1 +1,47 @@
+// approach: we sort the vector
+//then fix 1 point from i=0 to i<n and initialise two pointer 1t from i+1(left) & 2nd from last(right).
+//if sum of three element =0 then push to the result 
+// if sum i greater than target then right--
+//else left--;
+// in sum==0 column we will check if the (left) next element is = or (right)previous element is equal. Then we do right-- or left++. accordingly.
 
+
+
+vector<vector<int>> threeSum(vector<int>& nums) {
+        int n=nums.size(),sum;
+        vector<vector<int>> result;
+        sort(nums.begin(),nums.end());
+        
+        for(int i=0;i<n-2;i++){
+            
+            if(  i==0 || nums[i]!=nums[i-1]  ){
+                int j=i+1;
+                int k=n-1;
+                while(j<k){
+                    
+                    sum=nums[i]+nums[j]+nums[k];
+                    
+                    if(sum==0){
+                      result.push_back({nums[i],nums[j],nums[k]})  ;
+                        
+                        while(j<k && nums[j]==nums[j+1])
+                            j++;
+                        
+                         while(j<k && nums[k]==nums[k-1])
+                            k--;
+                        
+                       j++;
+                       k--;
+                    }else if(sum>0)
+                        k--;
+                    else
+                        j++;
+                    
+                }
+            }
+            
+            
+        }
+
+       return result; 
+    }
