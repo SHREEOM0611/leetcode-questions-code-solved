@@ -1,0 +1,33 @@
+// approach if sum==k then oncrement count
+// if sum-k is present in hash table then increment count by the value of frequency of sum-k
+// if not present then put value =1
+// if present then increment its value
+
+   
+   
+   int subarraySum(vector<int>& nums, int k) {
+      
+        int n=nums.size(),result=0,sum=0;
+        map<int,int> sum_m;
+        
+        
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            if(sum==k){
+                result++;
+            }
+            
+            
+            if(sum_m.find(sum-k)!=sum_m.end()){           
+                result+=sum_m[sum-k];
+            }
+            
+            if(sum_m.find(sum)!=sum_m.end()){
+                sum_m[sum]++;
+            }else
+                sum_m[sum]=1;
+
+        }
+        
+        return result;
+    }
