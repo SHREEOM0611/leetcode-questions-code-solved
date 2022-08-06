@@ -1,0 +1,58 @@
+    // going through the matrix and push_back the value in result
+    // the visited value is change to th value outside the constraint which makes it easier to check
+    // in this case the value in matrix should be less than 101 so we made the value 200; 
+    
+    
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int m=matrix.size(),n=matrix[0].size();
+        vector<int> result;
+        int row=0,column=0,i=0,j=0;
+        int mi=m,nj=n;
+        
+  
+        
+        while(result.size()<m*n){
+            
+ while(column<n && matrix[row][column]!=200){
+     result.push_back(matrix[row][column]);
+     matrix[row][column]=200;
+     column++;
+ }
+            
+            column--;
+            row++;
+            
+    while(row<m && matrix[row][column]!=200){
+     result.push_back(matrix[row][column]);
+     matrix[row][column]=200;
+     row++;
+ }
+            
+            column--;
+            row--;
+            
+             while(column>=0 && matrix[row][column]!=200){
+     result.push_back(matrix[row][column]);
+     matrix[row][column]=200;
+     column--;
+ }
+            
+            column++;
+            row--;
+            
+             while(row>=0 && matrix[row][column]!=200){
+     result.push_back(matrix[row][column]);
+     matrix[row][column]=200;
+     row--;
+ }
+            
+            column++;
+            row++;
+            
+            
+        
+    }
+        
+      
+        return result;
+    }
