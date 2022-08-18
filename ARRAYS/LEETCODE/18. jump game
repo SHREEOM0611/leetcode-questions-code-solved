@@ -1,0 +1,33 @@
+//   we will initialize the max reachable element as first alue of element   and update it whenever the new reachable is more than the reachable value
+// loop will be from 0 to reachable element
+   
+   
+   
+   
+   bool canJump(vector<int>& nums) {
+ 
+        int n=nums.size(),reach=nums[0];
+        
+        if(n==1){
+            return true;
+        }
+        if(n>1 && nums[0]==0){
+            return false;
+        }
+        
+   for(int i=0;i<=reach;i++){
+      if(reach>=n){
+          break;
+      }
+       if(reach<i+nums[i]){
+           reach=i+nums[i];
+          cout<<reach<<endl;
+       }
+       
+   }
+        
+        if(reach>=n-1){
+            return true;
+        }else return false;
+    
+    }
