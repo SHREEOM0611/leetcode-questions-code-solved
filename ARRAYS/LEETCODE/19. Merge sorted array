@@ -1,0 +1,43 @@
+    // here we are comparing the elements of nuns1 and nums2. smaller number is then put into the vector res.
+    // if any vector is completed then we put all remaining elements of the other vector into res
+    // we initialise the vector with size and every element to be 0 because change the value takes very less time than using push_back every time.
+    
+    
+    // this method takes more spae but very less time
+    
+    
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+  
+        int j=0,k=0,i=0;
+        vector<int> result(m+n,0);
+        
+        if(n!=0){
+            while(j<m && k<n){
+                if(nums1[j]>nums2[k]){
+                    result[i]=nums2[k];
+                    k++;i++;
+                }else {
+                    result[i]=nums1[j];
+                    j++;i++;
+                }
+            }
+            
+           while(j<m){
+               result[i]=nums1[j];
+               j++;i++;
+           }
+            
+             while(k<n){
+               result[i]=nums2[k];
+               k++;i++;
+           }
+          nums1=result;   
+        }
+       
+    }
+    
+    
+    // approach 2 : we can right shift nums1 if we find any eelemt of nums2 is smaller than i th  value of nums1 (i start from 0).
+    // then we put the num2 element in it and repeat this untill nums2 is completed.
+    
+    // approach 2 will take much more time and very less space.
