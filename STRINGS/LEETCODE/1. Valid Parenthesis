@@ -1,1 +1,39 @@
-
+// check valid input
+//
+// if stack is empty and check the new stak input is valid or not  if not then return false 
+// push to the stack untill its a valid input
+//
+bool isValid(string s) {
+     stack<char> st;
+        int n=s.size();
+        
+        if(n==1){
+            return false;
+        }
+        
+        st.push(s[0]);
+       
+        for(int i=1;i<n;i++){
+            
+           if(  s[i]==')' && !st.empty() && st.top()=='(' ){
+             
+               
+               st.pop();
+           } else if(  s[i]==']' && !st.empty() && st.top()=='[' ){
+               st.pop();
+            }else if(s[i]=='}' && !st.empty() && st.top()=='{' ){
+               st.pop();
+            }else if(s[i]=='{' || s[i]=='[' || s[i]=='('){
+               st.push(s[i]);
+           }   else return false;    
+           }
+    
+        if(st.empty())
+        return true;
+        
+        
+      return false;
+    }
+    
+    
+    
