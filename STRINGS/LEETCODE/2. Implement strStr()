@@ -35,3 +35,36 @@
         
        return -1; 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // using substr function of string.h
+    
+        int strStr(string haystack, string needle) {
+       int n=haystack.size(),m=needle.size();
+    
+        if(n<m){
+            return -1;
+        }
+        
+for(int i=0;i<=n-m;i++){
+    
+    string sub=haystack.substr(i,m);
+    if(sub==needle){
+        return i;
+    }
+    
+}
+            
+       
+        
+       return -1; 
+    }
