@@ -1,0 +1,77 @@
+    bool isTrue(string s){
+      int i=0,j=s.size()-1;
+        while(i<j){
+            if(s[i]!=s[j]){
+                return false;
+            }
+            i++; j--;      
+        }   
+      return true;
+    }
+    
+    
+    
+    
+    
+    bool validPalindrome(string s) {
+        
+      int i=0,j=s.size()-1,flag=0;
+       
+        if(isTrue(s)){
+            return true;
+        }
+            
+        while(i<j){
+            if(s[i]==s[j]){
+                i++;
+                j--;            
+            }else{           
+             break;          
+            }
+        }
+        
+        int left=i,right=j;
+        if(s[++left]==s[right]){
+            
+            while(left<right){
+            if(s[left]!=s[right]){
+                flag=1;
+                break;
+            }
+                left++;right--;
+            }
+            
+            if(flag==0){
+                s.erase(i,1);
+                 if(isTrue(s)){
+                    return true;
+        }
+        
+            }
+        }
+        
+        
+        left=i,right=j;
+        
+        if(s[left]== s[--right]) {
+            flag=0;
+              while(left<right){
+            if(s[left]!=s[right]){
+                flag=1;
+                break;
+            }
+                left++;right--;
+            }
+            
+            if(flag==0){
+                s.erase(j,1);
+                if(isTrue(s)){
+            return true;
+        }
+            }
+  
+        }
+
+        
+        return false;
+    }
