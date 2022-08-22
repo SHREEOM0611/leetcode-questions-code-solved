@@ -1,0 +1,27 @@
+   // check ith element of every vector till its not equal and return the string.
+   // if all equal then add that element into the string
+   
+   string longestCommonPrefix(vector<string>& strs) {
+        vector<char> result;
+        string ans;
+        int m=strs.size(),n=200,i,j,k=0 ;
+        for(int i=0;i<m;i++){
+            if(n>strs[i].size())
+                n=strs[i].size();
+        }
+        
+        
+        for( j=0;j<n;j++){
+            int flag=0;
+        for( i=0;i<m-1;i++){
+            
+            if(strs[i][j]!=strs[i+1][j]){
+                flag=1;
+                return ans;
+            }   
+        }
+                ans+=strs[i][j]; 
+        }
+ 
+        return ans;
+    }
