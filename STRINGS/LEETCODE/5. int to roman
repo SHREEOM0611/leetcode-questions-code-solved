@@ -1,0 +1,78 @@
+  // function to add Roman alphabets  
+string addroman(int n,string &str){
+    
+    
+    switch (n){
+        case 1: str+='I'; break;
+            case 4: str+="IV"; break;
+        case 5: str+='V'; break;
+            case 9: str+="IX"; break;
+        case 10: str+='X'; break;
+            case 40: str+="XL"; break;
+        case 50: str+='L'; break;
+            case 90: str+="XC"; break;
+        case 100: str+='C'; break;
+            case 400: str+="CD"; break;
+        case 500: str+='D'; break;
+            case 900: str+="CM"; break;
+        case 1000: str+='M'; break;
+              
+    
+}
+    
+    return str;
+}
+    
+    
+    
+    // our main function
+    string intToRoman(int num) {
+        string str;
+       while(num>0){
+           
+           if(num>=1000){
+               addroman(1000,str);
+               num-=1000;
+           }else if(num>=900){
+               addroman(900,str);
+               num-=900;
+           }else if(num>=500){
+               addroman(500,str);
+               num-=500;
+           }else if(num>=400){
+               addroman(400,str);
+               num-=400;
+           }else if(num>=100){
+               addroman(100,str);
+               num-=100;
+           }else if(num>=90){
+               addroman(90,str);
+               num-=90;
+           }else if(num>=50){
+               addroman(50,str);
+               num-=50;
+           }else if(num>=40){
+               addroman(40,str);
+               num-=40;
+           }else if(num>=10){
+               addroman(10,str);
+               num-=10;
+           }else if(num>=9){
+               addroman(9,str);
+               num-=9;
+           }else if(num>=5){
+               addroman(5,str);
+               num-=5;
+           }else if(num>=4){
+               addroman(4,str);
+               num-=4;
+           }else if(num>=1){
+               addroman(1,str);
+               num-=1;
+           }
+           
+           
+       } 
+        return str;
+        
+    }
