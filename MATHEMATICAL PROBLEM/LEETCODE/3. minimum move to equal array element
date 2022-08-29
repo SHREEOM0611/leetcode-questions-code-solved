@@ -1,0 +1,45 @@
+ // approach 1: sort and add
+ // sort the element check if 1st element is equal to next element 
+ // if yes return
+ // if not then increment counter , add the ones and then sort it again
+ // do it untill they are equal
+ 
+ // it will work untill the range is 10^6 then it will give tle
+ 
+       vector<int> addOne(vector<int>&nums){
+        
+        for(int i=0;i<nums.size()-1;i++){
+            nums[i]++;
+        }
+        return nums;
+    }
+    
+    int minMoves(vector<int>& nums) {
+        int count=0;
+       sort(nums.begin(),nums.end());
+        
+        while(nums[0]!=nums[nums.size()-1]){
+            
+            addOne(nums);
+            count++;
+           sort(nums.begin(),nums.end()); 
+        }
+        
+        return count;
+        
+    }
+ 
+
+ 
+ // approach 2: find the minimum number and substract it from every one else
+ // it will tel, us how many move it will take to be equal to that  number
+ 
+ int minMoves(vector<int>& nums) {
+       int sum=0;
+        int min=*min_element(nums.begin(),nums.end());
+        for(int i=0;i<nums.size();i++)
+            sum+= nums[i]-min;
+       
+        return sum;
+        
+    }
