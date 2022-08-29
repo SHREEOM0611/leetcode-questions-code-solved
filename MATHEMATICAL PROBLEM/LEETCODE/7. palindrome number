@@ -1,0 +1,24 @@
+    typedef long long ll;
+    bool isPalindrome(int x) {
+        
+        ll rev=0;
+        ll y=x;
+        if(y<0)
+            return false;
+        
+        while(y>0){
+            
+            if(rev>pow(2,31))
+                return false;
+            
+            rev= rev*10+ (y%10);
+             y/=10;
+            
+        }
+       
+        if(rev==x)
+            return true;
+        
+        return false;
+        
+    }
