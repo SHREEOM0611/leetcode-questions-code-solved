@@ -1,0 +1,97 @@
+    // approach 1: traversing through the string
+    
+    
+    string simplifyPath(string path) {
+        string ans;
+        int back=0;
+        
+     for(int i=path.size()-1;i>=0;i--){
+         
+         string temp;
+       
+       
+       
+       // for taking the value between two slash
+         while(i>=0 && path[i]!='/'){
+             temp=path[i]+temp;
+             i--;
+         }
+         
+       // adding string to ans if condition satisfy like 
+       //if back>0 then do not add
+       // if we get .. the increment add
+       // if there is no element between two slashes then do not add
+       
+       
+         if(temp=="..")
+             back++;
+                else{
+                             if(temp!="."  && temp!=""){ 
+                                 if(back==0){
+                                     ans='/'+temp+ans;            
+                                 }else back--;
+                             }
+                            }
+         
+     }
+        
+        
+        // special case if return answer is empty then we need to print current directory which is /
+        
+        if(ans==""){
+            return "/";
+        }
+        
+        
+       return ans;
+    }
+    
+    
+    
+    
+    // approach 2: same thing 
+    // but we are using stack for implementation and storing the valid folder between two slash in it
+    // if we found .. we pop, . we continue, "" we continue, else we pop
+    
+    string simplifyPath(string path) {
+        
+        stack<string> st;
+        string ans;
+        
+     for(int i=0;i<path.size();i++){
+         
+         if(path[i]=='/')
+             continue;
+         
+         string temp;
+         
+         while(i<path.size() && path[i]!='/'){
+             temp+=path[i];
+             ++i;
+         }
+         
+        
+         
+         if(temp=="."){
+             continue;
+         }else if(temp==".." ){
+             
+             if(!st.empty())
+             st.pop();
+         }else{
+             st.push(temp);
+         }   
+     }
+        
+        while(!st.empty()){
+            ans="/"+ st.top() + ans;
+            st.pop();
+        }
+        
+        if(ans==""){
+            return "/";
+        }
+        
+        
+       return ans;
+    }
