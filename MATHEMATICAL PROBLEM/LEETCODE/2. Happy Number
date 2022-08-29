@@ -1,0 +1,27 @@
+    typedef long long ll;
+    ll findsum(int n){
+        ll sum=0;
+        do{
+          sum+= (n%10)*(n%10);
+            n/=10;
+        }while(n>0);
+        return sum;
+    }
+    
+    bool isHappy(int n) {
+        
+        ll x= ll(n);
+        unordered_map<int,int> mymap;
+        
+        while(n!=1){
+            ll sum=findsum(x);
+            x=sum;
+            if(mymap.find(sum)!=mymap.end()){
+                return false;
+            }else if(sum==1){
+                return true;
+            }else mymap[sum]=1;
+        }
+        
+        return true;
+    }
