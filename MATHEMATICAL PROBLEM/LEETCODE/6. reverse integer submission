@@ -1,0 +1,34 @@
+    // approach 1: make a reverse integer
+    // check if while doing so it is out of range then return 0 usinglong long integer
+    
+    typedef long long ll;
+    int reverse(int x) {
+        int neg=0;
+        ll y;
+        ll rev=0;
+        if(x<0) {
+            neg=1;
+             y= ll (x)*-1;
+            if(y>pow(2,31)-1 || y<-1* pow(2,31)){
+                return 0;
+            }
+            x*=-1;
+        }
+        
+        while(x>0){
+            
+             y=rev*10;
+            if(y>pow(2,31)-1 || y<-1* pow(2,31)){
+                return 0;
+            }
+            
+          rev= rev*10 + (x%10);
+            x=x/10;
+            
+        }
+        if(neg==1)
+        return rev*-1;
+        
+        return rev;
+        
+    }
