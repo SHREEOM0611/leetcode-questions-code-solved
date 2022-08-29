@@ -1,0 +1,15 @@
+
+
+// approach 1: using log2 function
+// 100% faster
+
+    bool isPowerOfTwo(int n) {
+            return ceil(log2(n))==floor(log2(n)) && n>0;
+    }
+    
+    // approach 2: using bitwise operator & on n and n-1
+    // takes little bit less memory
+    
+     bool isPowerOfTwo(int n) {
+        return n > 0 && not (n & n - 1);
+    }
