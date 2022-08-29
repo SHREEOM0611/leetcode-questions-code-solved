@@ -1,0 +1,17 @@
+    // approach 1: we know the formula for 1st n integers
+    // use it and substract the original sum of the vector
+    
+    int missingNumber(vector<int>& nums) {
+        
+        int x=nums.size()*(nums.size()+1)/2;
+        int sum=0;
+        for(int i=0;i<nums.size();i++){
+            sum+=nums[i];
+        }
+        
+        return x-sum;
+        
+    }
+    
+    // approach 2: use xor
+    
