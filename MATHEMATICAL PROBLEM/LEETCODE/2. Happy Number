@@ -1,3 +1,5 @@
+    // using map && find
+    
     typedef long long ll;
     ll findsum(int n){
         ll sum=0;
@@ -21,6 +23,38 @@
             }else if(sum==1){
                 return true;
             }else mymap[sum]=1;
+        }
+        
+        return true;
+    }
+\
+
+
+// using unordered set & find
+
+    typedef long long ll;
+    ll findsum(int n){
+        ll sum=0;
+        do{
+          sum+= (n%10)*(n%10);
+            n/=10;
+        }while(n>0);
+        return sum;
+    }
+    
+    bool isHappy(int n) {
+        
+        ll x= ll(n);
+        unordered_set<ll> number;
+        
+        while(x!=1 ){
+            
+            if(number.find(x)!=number.end()){
+                return false;
+            }
+           number.insert(x);
+            ll sum=findsum(x);
+            x=sum;
         }
         
         return true;
