@@ -1,0 +1,36 @@
+// to see why we did -- we need to check the test cases 
+// enter 18278
+// and divide it by 26 and cout the output
+// we see if % is 0 then we will see the relation that for 1st 26 there are only one alphabets
+// for two digits we have 26 + 26*26 =='ZZ'
+// for three digits we have 26+ 26*26+ 26*26*26 =='ZZZ'
+// so whenever we get modulo =0 we will decrease next number by 1;
+    
+    
+    
+    
+    string convertToTitle(int columnNumber) {
+        string str;
+    
+       vector<int> remainder;
+        while(columnNumber>0){
+            remainder.push_back(columnNumber%26);
+            cout<<columnNumber<<endl;
+            columnNumber/=26;
+        }
+        
+      for(int i=0;i<remainder.size();i++){
+          
+          if(remainder[i]==0 ){
+              if(i+1<remainder.size() && remainder[i+1]>0){
+                  str='Z'+str;
+                  remainder[i+1]--;
+              }
+          }else{
+              str=char(remainder[i]+64)+str;
+          }
+          
+      }  
+        
+        return str;
+    }
