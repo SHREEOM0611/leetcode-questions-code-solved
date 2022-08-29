@@ -1,0 +1,13 @@
+  // approach 1: sort and compare
+  
+     int maximumProduct(vector<int>& nums) {
+        
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        int sum1=nums[0]*nums[1]*nums[n-1];
+        int sum2=nums[n-1]*nums[n-2]*nums[n-3];
+        return max(sum1,sum2);
+    }
+    
+    // approach 2: store it in set and then use sum1 and sum2
+    // it will reduce the time complexity
