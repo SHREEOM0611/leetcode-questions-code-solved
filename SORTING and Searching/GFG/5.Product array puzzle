@@ -1,0 +1,34 @@
+    vector<long long int> productExceptSelf(vector<long long int>& nums, int n) {
+       
+        //code here   
+        long long product=1;
+        int count=0;
+        vector<long long int> ans;
+        for(int i=0;i<n;i++){
+           if(nums[i]!=0)
+            product*=nums[i];
+            else count ++;
+        }
+        
+        
+        long long a=abs(product);
+        
+       for(int i=0;i<n;i++){
+           
+           if(count>1){
+               nums[i]=0;
+               continue;
+           }else if(count==1 && nums[i]==0 ){
+               nums[i]=product;
+               continue;
+           }else if(count==1 && nums[i]!=0 ){
+               nums[i]=0;
+               continue;
+               }
+              nums[i]=product/nums[i]; 
+               
+       }
+       
+        
+        return nums;
+    }
