@@ -1,0 +1,27 @@
+// approach 1: count the no. of zeros, ones, twos, 
+    Node* segregate(Node *head) {
+        
+        // Add code here
+        int zero=0;
+        int one=0;
+        int two=0;
+        Node *p=head;
+        while(p!=NULL){
+            if(p->data==1) one++;
+             else if(p->data==2) two++;
+             else if(p->data==0) zero++;
+             
+             p=p->next;
+        }
+        p=head;
+        while(p!=NULL){
+            for(int i=0;i<zero;i++) {p->data=0; p=p->next;}
+            for(int i=0;i<one;i++) {p->data=1; p=p->next;}
+            for(int i=0;i<two;i++) {p->data=2; p=p->next;}
+        }
+        
+      return head;  
+    }
+    
+    
+    // approach 2: by changing the links  se the solution of sort the linked list;
