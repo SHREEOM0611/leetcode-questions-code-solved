@@ -1,0 +1,45 @@
+// approach 1: using linear traversal
+
+    int findPeakElement(vector<int>& nums) {
+      int n=nums.size();
+        
+        if(n>1){
+        
+        if(nums[0]>nums[1])  return 0;
+        
+        for(int i=1;i<n-1;i++){
+            if(nums[i]>nums[i-1] && nums[i]>nums[i+1])
+                return i;
+        }
+        
+        if(nums[n-1]>nums[n-2])   return n-1;
+        
+        }
+        return 0;
+    }
+    
+    
+    //approach 2: implement kind of binary search  if their is only one element then its kind of work like the sorted array, 
+    
+        int findPeakElement(vector<int>& nums) {
+        int n = nums.size();
+        int l = 0, h = n-1, mid;
+        while(l<=h){
+            mid = l + (h-l)/2;
+            
+            if((mid == 0 || nums[mid-1] < nums[mid]) && (mid == n-1 || nums[mid+1] < nums[mid]))
+                return mid;
+            
+            if(mid == 0 || nums[mid-1] < nums[mid])
+                l = mid + 1;
+            else 
+                h = mid - 1;
+        }
+        return 0;
+    }
+    
+    
+    // there will be atleast 1 max element in the array 
+    // it can be in the 1st halves,2nd halves or occur in multiple halves 
+    //so we are finding the mid index and checking it with its previous one
+    // if greater high will change else low will change
