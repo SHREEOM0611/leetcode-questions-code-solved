@@ -1,0 +1,25 @@
+// approach 1: rabbit and tortoise algo
+
+ bool hasCycle(ListNode *head) {
+        
+        ListNode *walk=head;
+        ListNode *run=head;
+        
+        if(walk==NULL ){
+            return false;
+        }
+        
+        
+    while(run->next!=NULL && run->next->next!=NULL){
+        
+        run=run->next->next;
+        walk=walk->next;
+        
+        
+        if(run==walk){
+            return true;
+        }
+        
+    } 
+        return false;
+    }
