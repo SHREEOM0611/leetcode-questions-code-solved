@@ -1,0 +1,45 @@
+	// using map
+  
+  string removeDuplicates(string str) {
+	    // code here
+	    unordered_map<char,int> m;
+	    int n=str.size();
+	    for(int i=0;i<n;i++){
+	        
+	        if(m.find(str[i])!=m.end()){
+	            str.erase(i,1);
+	            --i;
+	            --n;
+	        }else {
+	            m[str[i]]=1;
+	        }
+	        
+	       
+	    }
+	    
+	    return str;
+	}
+};
+
+
+// optimising the code
+// reducing time complexity
+// space complexity increases
+	string removeDuplicates(string str) {
+	    // code here
+	    unordered_map<char,int> m;
+	    int n=str.size(),i=0;
+	    string s;
+	    while(i<n){
+    
+	        if(m.find(str[i])!=m.end()){
+	            
+	        }else {
+	            m[str[i]]=1;
+	            s+=str[i];
+	        }
+	       i++;
+	    }
+	    
+	return s;    
+	}
