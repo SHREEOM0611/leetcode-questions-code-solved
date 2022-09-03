@@ -1,0 +1,22 @@
+   //first find the length of linked list
+   // then use that length as the power of 2 
+   
+   int getDecimalValue(ListNode* head) {
+        ListNode* first=head;
+        int count=0;
+        while(first->next!=NULL){
+            count++;
+            first=first->next;
+        }
+        
+        int sum=0;
+        
+        do{
+           sum +=   (head->val)*(pow(2,count--)); 
+            head=head->next;
+           
+        }while(count>=0);
+        
+        
+        return sum;
+    }
