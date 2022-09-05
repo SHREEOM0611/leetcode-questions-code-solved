@@ -1,0 +1,51 @@
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        
+        ListNode* head;
+       
+       
+       // if anyone one is NULL return other
+        if(list1==NULL){
+            return list2;
+        }
+        
+        if(list2==NULL){
+            return list1;    
+        }
+        
+        // if no one is NULL initialize the head 
+        if(list1->val>list2->val){
+            head=list2;
+            list2=list2->next;
+        }else {
+            head=list1;
+            list1=list1->next;
+        }
+        
+        
+        
+        
+        ListNode* first=head;
+     
+     
+     // looping through the lists to find min val and update the resultant linked list
+     
+        while(list1 && list2 ){
+            if(list1->val>list2->val ){
+                first->next=list2;            
+                list2=list2->next;
+            }else {
+                first->next=list1;   
+                list1=list1->next;
+            }
+            first=first->next;
+        }
+      
+      // if anyone one list is emptied and other's not
+        
+        if(list1){
+            first->next=list1;
+        }else{
+            first->next=list2;
+        }
+        return head;
+    }
