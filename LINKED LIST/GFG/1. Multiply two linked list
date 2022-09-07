@@ -1,0 +1,23 @@
+// using modulo whenever there is a chance of overstepping the long long boundary which can happen in case of multiplication.
+
+long long  multiplyTwoLists (Node* l1, Node* l2)
+{
+  //Your code here
+  long long val1=0,val2=0;
+   
+  
+   
+  while(l1!=NULL){
+      val1= ((val1*10)%1000000007 + l1->data);
+      l1=l1->next;
+      
+  }
+  
+   while(l2!=NULL){
+      val2 = ((val2*10)%1000000007 + l2->data);
+      l2=l2->next;
+  }
+  
+  return (val1*val2)%1000000007;
+ 
+}
