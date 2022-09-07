@@ -1,0 +1,85 @@
+  // approach : put the linked list's value in vector and check it.
+  
+  bool pal(vector<int> check){
+        int j=check.size()-1,i=0;
+        
+       while(i<j){
+           if(check[i]!=check[j])
+               return false;
+           ++i;
+           --j;
+       }
+        return true;
+    }
+    
+    bool isPalindrome(ListNode* head) {
+        vector<int> check;
+       
+        while(head!=NULL){
+          check.emplace(head->val);
+            head=head->next;
+        }
+        
+        return pal(check);
+    }
+    
+    // approach2: reverse the next halve and start checking first val with the second half
+    // take 5 test cases of od even and one with only 1 inputs and check the calculations we need
+    
+    
+    
+    // finding the second half
+    
+            ListNode* findNode(ListNode* head){
+                ListNode* walk=head;
+                ListNode* run=head;
+                while(run!=NULL && run->next!=NULL && run->next->next!=NULL){
+                    walk=walk->next;
+                    run=run->next->next;
+                }                             
+             return walk;   
+       }
+    // reversing the second half
+    
+        ListNode* reverse(ListNode* second){
+                    ListNode* p=second->next;
+                    ListNode* q;
+                    if(p->next!=NULL){
+                        q=p->next;
+                    }
+                    p->next=NULL;
+                            while(q!=NULL){
+
+                                ListNode* temp=q->next;
+                                q->next=p;
+                                p=q;
+                                q=temp;
+                            }
+                    second->next=p;
+               return p; 
+    }
+    
+    // checking if second half is equal to 1st half
+    bool pal(ListNode* head, ListNode* second){
+        while(second!=NULL){
+          if(head->val!=second->val)
+              return false;
+          
+          head=head->next;
+          second=second->next;
+      }
+        return true;
+    }
+    
+
+    bool isPalindrome(ListNode* head) {
+        
+        if(head->next==NULL){
+            return true;
+        }
+        
+        ListNode* second = findNode(head);
+        second= reverse(second);
+        
+        return pal(head,second);   
+    }
