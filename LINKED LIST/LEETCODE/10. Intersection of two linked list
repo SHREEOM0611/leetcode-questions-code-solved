@@ -1,0 +1,14 @@
+// Time complexity O(n^2)    
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+       
+        while(headA!=NULL ){
+           ListNode* first=headB;
+            while(first!=NULL){
+                if(first==headA) return first;
+                
+                first=first->next;
+            }
+            headA=headA->next;         
+        }     
+        return headA;
+    }
