@@ -1,0 +1,29 @@
+    ListNode* reverseList(ListNode* head) {
+        ListNode* p=head;
+        ListNode* q;
+        
+        // initiaize q if head->next exists otherwise return the head
+         if(head==NULL || head->next==NULL){
+             return head;
+         }else if(head->next!=NULL){
+             q=head->next;
+         }
+        
+        
+        while(q->next!=NULL){
+           ListNode* temp;
+            temp=q->next;
+            q->next=p;
+            p=q;
+            q=temp;  
+        }
+        
+        // connecting the last value to the previous one
+        // putting the first value to NULL 
+        // updating the Head
+        q->next=p;
+        head->next=NULL;
+        head=q;
+        
+        return head;
+    }
