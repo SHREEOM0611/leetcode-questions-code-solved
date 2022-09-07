@@ -12,3 +12,28 @@
         }     
         return headA;
     }
+
+
+
+
+// using map decreses time complexity to O(m+n)
+
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+      
+        unordered_map<ListNode*,int> a;
+        
+        
+        while(headA!=NULL){
+            a[headA]=1;
+            headA=headA->next;
+        }
+
+       while(headB!=NULL){
+           if(a.find(headB)!=a.end()){
+               return headB;
+           }
+           headB=headB->next;
+       }   
+ 
+        return NULL;
+    }
