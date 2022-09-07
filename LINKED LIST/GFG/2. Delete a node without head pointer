@@ -1,0 +1,10 @@
+// in this we have one problem that we cannot change the previous node's next val
+// so we will take the next node's data and store it in the del node
+
+void deleteNode(Node *del)
+    {
+       // Your code here
+       Node *d=del;
+       del->data=del->next->data;
+      del->next=del->next->next; 
+    }
