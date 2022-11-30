@@ -1,3 +1,6 @@
+  // using two pointers first for i and another for next unique element.
+  // second pointer is used to find next unique element and will be incremented untill it finds it.
+  
   int removeDuplicates(vector<int>& nums) {
         int flag=0,i=0,j=1;
         while(j<nums.size()-1){
